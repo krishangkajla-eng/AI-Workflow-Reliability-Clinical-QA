@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - pipeline_data:/app/data
+    environment:
+      DB_PATH: /app/data/pipeline.db
+    restart: unless-stopped
+
+volumes:
+  pipeline_data:
